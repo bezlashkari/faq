@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+
+    <style>
+    /* Style the accordion button and content */
+    .accordion-button {
+      background: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+
+    .accordion-button:after {
+      content: '\002B'; /* Unicode character for "+" */
+      font-size: 13px;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .accordion-button[aria-expanded="true"]:after {
+      content: "\2212"; /* Unicode character for "-" */
+    }
+
+    .accordion-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background: #f9f9f9;
+    }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <div class="card">
+            <button class="accordion-button" aria-expanded="false">
+                <h2>Question 1?</h2>
+            </button>
+            <div class="accordion-content">
+                <p>Answer 1</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <button class="accordion-button" aria-expanded="false">
+                <h2>Question 2?</h2>
+            </button>
+            <div class="accordion-content">
+                <p>Answer 2</p>
+            </div>
+        </div>
+    <!-- Add more FAQ items as needed -->
+    </div>
+
+    <script type="text/javascript">
+    var acc = document.getElementsByClassName("accordion-button");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+    </script>
+
+    <script type="text/javascript">
+    window.onload = function() {
+      const accordion = document.querySelector('.accordion');
+      const cards = Array.from(accordion.querySelectorAll('.card'));
+
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": cards.map(card => {
+          const question = card.querySelector('h2').innerText;
+          const answer = card.querySelector('p').innerText;
+          return {
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": answer
+            }
+          };
+        })
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.innerHTML = JSON.stringify(structuredData);
+
+      document.head.appendChild(script);
+    }
+    </script>
+</body>
+</html>
