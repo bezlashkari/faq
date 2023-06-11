@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
     /* Style the accordion button and content */
@@ -17,6 +20,10 @@
       border: none;
       outline: none;
       transition: 0.4s;
+    }
+
+    body, h1, h2, h3, li, p, a {
+      font-family: 'Karla', sans-serif;
     }
 
     .accordion-button:after {
@@ -38,9 +45,32 @@
       transition: max-height 0.2s ease-out;
       background: #f9f9f9;
     }
+    .main-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .logo {
+      width:300px;
+    }
+    .logo img {
+      width:100%;
+    }
+    h1 span {
+      color:#b5121b;
+    }
+    h1 {
+      font-family: 'Crimson Text', serif;
+;
+    }
+
     </style>
 </head>
 <body>
+  <div class="main-wrapper">
+    <div class="logo">
+      <img src="CHR_Logo-1_0_0.png" />
+    </div>
+    <h1>FAQ <span>Accordion</span></h1>
     <div class="accordion">
         <div class="card">
             <button class="accordion-button" aria-expanded="false">
@@ -61,6 +91,8 @@
         </div>
     <!-- Add more FAQ items as needed -->
     </div>
+  </div>
+
 
     <script type="text/javascript">
     var acc = document.getElementsByClassName("accordion-button");
