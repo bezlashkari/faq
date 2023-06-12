@@ -23,6 +23,7 @@
       border: none;
       outline: none;
       transition: 0.4s;
+      display:flex;
     }
 
     .accordion-button:focus-visible {
@@ -37,7 +38,7 @@
       font-family: 'Karla', sans-serif;
     }
 
-    .accordion-button:after {
+    /* .accordion-button:after {
       content: '';
       display: block;
       background: url('./expand-accordion.svg');
@@ -48,19 +49,14 @@
       position: absolute;
       right: 0;
       top: 20px;
+    } */
+    .down-arrow {
+      width:25px;
+      margin-left: auto;
+      transition: all 0.2s;
     }
-
-    .accordion-button[aria-expanded="true"]:after {
-      content: '';
-      display: block;
-      background: url('./collapse-accordion.svg');
-      width: 25px;
-      height: 25px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      position: absolute;
-      right: 0;
-      top: 20px;
+    .accordion-button[aria-expanded="true"] .down-arrow {
+      transform: rotate(180deg);
     }
     .accordion {
       background-color: #9C1B3F;
@@ -122,6 +118,7 @@
         <li class="card">
             <button class="accordion-button" aria-expanded="false" aria-controls="content-1" id="accordion-control-1">
                 <h2>What time is check-in and check-out?</h2>
+                <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
             </button>
             <div class="accordion-content" aria-hidden="true" id="content-1">
                 <p>Check-in is typically from 3 PM, and check-out is usually by 11 AM. Please contact us directly for requests outside these hours.</p>
@@ -131,6 +128,7 @@
         <li class="card">
             <button class="accordion-button" aria-expanded="false" aria-controls="content-2" id="accordion-control-2">
                 <h2>Do you offer free Wi-Fi?</h2>
+                <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
             </button>
             <div class="accordion-content" aria-hidden="true" id="content-2">
                 <p>Yes, we offer complimentary high-speed Wi-Fi throughout the hotel.</p>
@@ -140,6 +138,7 @@
         <li class="card">
             <button class="accordion-button" aria-expanded="false" aria-controls="content-3" id="accordion-control-3">
                 <h2>Is breakfast included in the room rate?</h2>
+                <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
             </button>
             <div class="accordion-content" aria-hidden="true" id="content-3">
                 <p>Our rates typically do not include breakfast unless otherwise stated. We offer an extensive breakfast menu at an additional cost.</p>
@@ -149,6 +148,7 @@
         <li class="card">
             <button class="accordion-button" aria-expanded="false" aria-controls="content-4" id="accordion-control-4">
                 <h2>Do you allow pets in the hotel?</h2>
+                <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
             </button>
             <div class="accordion-content" aria-hidden="true" id="content-4">
                 <p>Yes, our hotel is pet-friendly. There may be an additional deposit or cleaning fee. Please call us for more details.</p>
@@ -158,6 +158,7 @@
         <li class="card">
           <button class="accordion-button" aria-expanded="false" aria-controls="content-5" id="accordion-control-5">
               <h2>Do you have parking facilities?</h2>
+              <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
           </button>
           <div class="accordion-content" aria-hidden="true" id="content-5">
               <p>Yes, we offer free on-site parking for our guests. Please note that spaces are subject to availability.</p>
@@ -167,6 +168,7 @@
         <li class="card">
             <button class="accordion-button" aria-expanded="false" aria-controls="content-6" id="accordion-control-6">
                 <h2>Are your facilities wheelchair accessible?</h2>
+                <img src="./expand-accordion.svg" class="down-arrow" alt="expand accordion icon">
             </button>
             <div class="accordion-content" aria-hidden="true" id="content-6">
                 <p>Yes, we are fully ADA compliant with accessible rooms and common spaces. Please let us know in advance if you require any additional accommodations.</p>
