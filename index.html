@@ -9,12 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+      body {
+        margin:0;
+      }
     /* Style the accordion button and content */
     .accordion-button {
-      background: #eee;
-      color: #444;
+      background: none;
+      position:relative;
       cursor: pointer;
-      padding: 18px;
+      padding: 20px 0;
       width: 100%;
       text-align: left;
       border: none;
@@ -22,35 +25,77 @@
       transition: 0.4s;
     }
 
+    .accordion-button:focus-visible {
+      background-color: #b04965;
+    }
+
+    .accordion-button h2 {
+      margin:0 25px 0 0;
+    }
+
     body, h1, h2, h3, li, p, a {
       font-family: 'Karla', sans-serif;
     }
 
     .accordion-button:after {
-      content: '\002B'; /* Unicode character for "+" */
-      font-size: 13px;
-      color: #777;
-      float: right;
-      margin-left: 5px;
+      content: '';
+      display: block;
+      background: url('./expand-accordion.svg');
+      width: 25px;
+      height: 25px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 20px;
     }
 
     .accordion-button[aria-expanded="true"]:after {
-      content: "\2212"; /* Unicode character for "-" */
+      content: '';
+      display: block;
+      background: url('./collapse-accordion.svg');
+      width: 25px;
+      height: 25px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 20px;
     }
-
+    .accordion {
+      background-color: #9C1B3F;
+      color:#fff;
+      padding: 50px 20px 70px 20px;
+    }
+    .accordion-controls {
+      max-width: 800px;
+      margin:0 auto;
+    }
+    ul {
+      list-style-type: none;
+      padding:0;
+    }
+    .card {
+      border-bottom:1px solid #fff;
+    }
+    .card h2, h3, p {
+      color: #fff;
+    }
     .accordion-content {
-      padding: 0 18px;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.2s ease-out;
-      background: #f9f9f9;
+    }
+    .accordion-content p {
+      margin: 0 0 35px 0;
     }
     .main-wrapper {
       max-width: 1280px;
       margin: 0 auto;
     }
     .logo {
-      width:300px;
+      width:250px;
+      margin:0 auto;
     }
     .logo img {
       width:100%;
@@ -60,7 +105,8 @@
     }
     h1 {
       font-family: 'Crimson Text', serif;
-;
+      text-align:center;
+
     }
 
     </style>
@@ -72,43 +118,82 @@
     </div>
     <h1>FAQ <span>Accordion</span></h1>
     <div class="accordion">
-        <div class="card">
-            <button class="accordion-button" aria-expanded="false">
-                <h2>Question 1?</h2>
+      <ul class="accordion-controls" aria-label="Accordion Control Group Buttons">
+        <li class="card">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-1" id="accordion-control-1">
+                <h2>What time is check-in and check-out?</h2>
             </button>
-            <div class="accordion-content">
-                <p>Answer 1</p>
+            <div class="accordion-content" aria-hidden="true" id="content-1">
+                <p>Check-in is typically from 3 PM, and check-out is usually by 11 AM. Please contact us directly for requests outside these hours.</p>
             </div>
-        </div>
+        </li>
 
-        <div class="card">
-            <button class="accordion-button" aria-expanded="false">
-                <h2>Question 2?</h2>
+        <li class="card">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-2" id="accordion-control-2">
+                <h2>Do you offer free Wi-Fi?</h2>
             </button>
-            <div class="accordion-content">
-                <p>Answer 2</p>
+            <div class="accordion-content" aria-hidden="true" id="content-2">
+                <p>Yes, we offer complimentary high-speed Wi-Fi throughout the hotel.</p>
             </div>
-        </div>
-    <!-- Add more FAQ items as needed -->
+        </li>
+
+        <li class="card">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-3" id="accordion-control-3">
+                <h2>Is breakfast included in the room rate?</h2>
+            </button>
+            <div class="accordion-content" aria-hidden="true" id="content-3">
+                <p>Our rates typically do not include breakfast unless otherwise stated. We offer an extensive breakfast menu at an additional cost.</p>
+            </div>
+        </li>
+
+        <li class="card">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-4" id="accordion-control-4">
+                <h2>Do you allow pets in the hotel?</h2>
+            </button>
+            <div class="accordion-content" aria-hidden="true" id="content-4">
+                <p>Yes, our hotel is pet-friendly. There may be an additional deposit or cleaning fee. Please call us for more details.</p>
+            </div>
+        </li>
+
+        <li class="card">
+          <button class="accordion-button" aria-expanded="false" aria-controls="content-5" id="accordion-control-5">
+              <h2>Do you have parking facilities?</h2>
+          </button>
+          <div class="accordion-content" aria-hidden="true" id="content-5">
+              <p>Yes, we offer free on-site parking for our guests. Please note that spaces are subject to availability.</p>
+          </div>
+        </li>
+
+        <li class="card">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-6" id="accordion-control-6">
+                <h2>Are your facilities wheelchair accessible?</h2>
+            </button>
+            <div class="accordion-content" aria-hidden="true" id="content-6">
+                <p>Yes, we are fully ADA compliant with accessible rooms and common spaces. Please let us know in advance if you require any additional accommodations.</p>
+            </div>
+        </li>
+      </ul>
     </div>
   </div>
 
 
     <script type="text/javascript">
-    var acc = document.getElementsByClassName("accordion-button");
-    var i;
+      var acc = document.getElementsByClassName("accordion-button");
+      var i;
 
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    }
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+          var content = this.nextElementSibling;
+          content.setAttribute('aria-hidden', content.getAttribute('aria-hidden') === 'true' ? 'false' : 'true');
+
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      }
     </script>
 
     <script type="text/javascript">
